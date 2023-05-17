@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProiectIP.MainPageIngrijitor">
+    <ContentPage.Content>
+        <StackLayout>
+            <CollectionView x:Name="TabelaPacienti"
+                            SelectionMode="Single"
+                            SelectionChanged="TabelaPacienti_SelectionChanged"
+                            SelectedItem="null">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Text="{Binding numePacient}" />
+                            <Label Grid.Row="1" Text="{Binding prenumePacient}" />
+                            <Label Grid.Row="2" Text="{Binding telefonPacient}" />
+                            <Label Grid.Row="3" Text="{Binding cnpPacient}" />
+                            <Label Grid.Row="4" Text="{Binding adresaPacient}" />
+                            <Label Grid.Row="5" Text=""/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="MicrochartsSampleXF.MainPage" xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             x:Class="ProiectIP.MainPagePacient"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"    
+             xmlns:dxc="https://schemas.devexpress.com/xamarin/2014/forms/charts">
+    <ScrollView>
+        <StackLayout BackgroundColor="#add8e6" WidthRequest="600" Padding="0,0,0,0">
+            <Frame BorderColor="Gray" CornerRadius="5" Padding="8" Margin="10,5">
+                <microcharts:ChartView x:Name="MyChart"  HeightRequest="300" WidthRequest="600"/>
+            </Frame>
+            <Label
+                x:Name="UltimaConusltatieLabel">
+            </Label>
+            <Label
+                x:Name="afectiuniCroniceLabel">
+            </Label>
+            <Label
+                x:Name="AlergiiLabel">
+            </Label>
+            <Label
+                x:Name="DiagnosticLabel">
+            </Label>
+            <Label
+                x:Name="TratamentLabel">
+            </Label>
+            <Label
+                x:Name="TALabel">
+            </Label>
+            <Label
+                x:Name="glicemieLabel">
+            </Label>
+            <Label
+                x:Name="greutateLabel">
+            </Label>
+            <Label
+                x:Name="proximitateLabel">
+            </Label>
+            <Label
+                x:Name="pulsLabel">
+            </Label>
+            <Label
+                x:Name="saturatieGazLabel">
+            </Label>
+            <Label
+                x:Name="tempAmbientalaLabel">
+            </Label>
+            <Label
+                x:Name="tempCorpLabel">
+            </Label>
+            <Label
+                x:Name="umiditateLabel">
+            </Label>
+            <Button
+                VerticalOptions="End" 
+                Text="Formular" 
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="Black" 
+                BackgroundColor="#87ceeb" 
+                BorderWidth="1"
+                BorderColor="Black"
+                CornerRadius="50"
+                Clicked="Button_Clicked"
+                xct:TouchEffect.LongPressCommand="{Binding TouchCommand}"
+                xct:TouchEffect.LongPressDuration="250" 
+                Margin="20,0"/>
+            <Button
+                VerticalOptions="End"
+                Text="Recomandari"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                BackgroundColor="#87ceeb"
+                BorderWidth="1"
+                BorderColor="Black"
+                CornerRadius="50"
+                Clicked="Button_Clicked_1"
+                xct:TouchEffect.LongPressCommand="{Binding TouchCommand}"
+                xct:TouchEffect.LongPressDuration="250" 
+                Margin="20,0"/>
+        </StackLayout>
+        
+    </ScrollView>
+
+
+</ContentPage>
+    
+    
+    
+    

@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:android="http://schemas.android.com/apk/res/android"
+             x:Class="ProiectIP.FormularPage"
+             BackgroundColor="#add8e6">
+
+    <ScrollView>
+        <StackLayout
+            Padding="40" 
+            VerticalOptions="Center"
+            HorizontalOptions="FillAndExpand">
+            <Label
+                Text="Glicemie"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                HorizontalTextAlignment="Start"
+                HorizontalOptions="Start"
+                VerticalTextAlignment="Center"
+                TranslationX="20"
+                TranslationY="-30">
+            </Label>
+            <Entry
+                x:Name="txtGlicemie"
+                TextColor="Black" 
+                FontSize="20"
+                Margin="15,0,0,0"
+                Keyboard="Numeric"
+                TranslationY="-80"
+                HorizontalOptions="EndAndExpand"
+                HorizontalTextAlignment="Start">
+            </Entry>
+
+            <Label
+                Text="Tensiune Arteriala"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                HorizontalTextAlignment="Start"
+                HorizontalOptions="Start"
+                VerticalTextAlignment="Center"
+                TranslationX="20"
+                TranslationY="-30">
+            </Label>
+            <Entry
+                x:Name="txtTensiuneArteriala"
+                TextColor="Black" 
+                FontSize="20"
+                Margin="15,0,0,0"
+                Keyboard="Numeric"
+                TranslationY="-80"
+                HorizontalOptions="EndAndExpand"
+                HorizontalTextAlignment="Start">
+            </Entry>
+
+            <Label
+                Text="Greutate"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                HorizontalTextAlignment="Start"
+                HorizontalOptions="Start"
+                VerticalTextAlignment="Center"
+                TranslationX="20"
+                TranslationY="-30">
+            </Label>
+            <Entry
+                x:Name="txtGreutate"
+                TextColor="Black" 
+                FontSize="20"
+                Margin="15,0,0,0"
+                Keyboard="Numeric"
+                TranslationY="-80"                
+                HorizontalOptions="EndAndExpand"
+                HorizontalTextAlignment="Start">
+            </Entry>
+
+            <Button 
+                VerticalOptions="Center"
+                HorizontalOptions="Start"
+                Text="Anulare" 
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="Black" 
+                BackgroundColor="#87ceeb" 
+                BorderWidth="1"
+                BorderColor="Black"
+                CornerRadius="50"
+                Clicked="Button_Clicked"
+                TranslationY="80"
+                xct:TouchEffect.LongPressCommand="{Binding TouchCommand}"
+                xct:TouchEffect.LongPressDuration="250"
+                >
+            </Button>
+            <Button 
+                VerticalOptions="Center"
+                HorizontalOptions="End"
+                Text="Trimitere" 
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="Black" 
+                BackgroundColor="#87ceeb" 
+                BorderWidth="1"
+                BorderColor="Black"
+                CornerRadius="50"
+                Clicked="Button_Clicked_1"
+                TranslationY="30"
+                xct:TouchEffect.LongPressCommand="{Binding TouchCommand}"
+                xct:TouchEffect.LongPressDuration="250"
+                >
+            </Button>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

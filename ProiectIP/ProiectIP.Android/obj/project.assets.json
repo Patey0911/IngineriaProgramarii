@@ -5947,24 +5947,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\claud\\.nuget\\packages\\": {},
+    "C:\\Users\\mihal\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\claud\\Documents\\GitHub\\desktop-tutorial\\IngineriaProgramarii\\ProiectIP\\ProiectIP.Android\\ProiectIP.Android.csproj",
+      "projectUniqueName": "C:\\Users\\mihal\\Desktop\\IngineriaProgramarii\\ProiectIP\\ProiectIP.Android\\ProiectIP.Android.csproj",
       "projectName": "ProiectIP.Android",
-      "projectPath": "C:\\Users\\claud\\Documents\\GitHub\\desktop-tutorial\\IngineriaProgramarii\\ProiectIP\\ProiectIP.Android\\ProiectIP.Android.csproj",
-      "packagesPath": "C:\\Users\\claud\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\claud\\Documents\\GitHub\\desktop-tutorial\\IngineriaProgramarii\\ProiectIP\\ProiectIP.Android\\obj\\",
+      "projectPath": "C:\\Users\\mihal\\Desktop\\IngineriaProgramarii\\ProiectIP\\ProiectIP.Android\\ProiectIP.Android.csproj",
+      "packagesPath": "C:\\Users\\mihal\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mihal\\Desktop\\IngineriaProgramarii\\ProiectIP\\ProiectIP.Android\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\claud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mihal\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5978,8 +5978,8 @@
       "frameworks": {
         "monoandroid13.0": {
           "projectReferences": {
-            "C:\\Users\\claud\\Documents\\GitHub\\desktop-tutorial\\IngineriaProgramarii\\ProiectIP\\ProiectIP\\ProiectIP.csproj": {
-              "projectPath": "C:\\Users\\claud\\Documents\\GitHub\\desktop-tutorial\\IngineriaProgramarii\\ProiectIP\\ProiectIP\\ProiectIP.csproj"
+            "C:\\Users\\mihal\\Desktop\\IngineriaProgramarii\\ProiectIP\\ProiectIP\\ProiectIP.csproj": {
+              "projectPath": "C:\\Users\\mihal\\Desktop\\IngineriaProgramarii\\ProiectIP\\ProiectIP\\ProiectIP.csproj"
             }
           }
         }
@@ -5992,14 +5992,6 @@
             "target": "Package",
             "version": "[0.9.5.9, )"
           },
-          "Microcharts": {
-            "target": "Package",
-            "version": "[0.9.5.9, )"
-          },
-          "Microcharts.Forms": {
-            "target": "Package",
-            "version": "[0.9.5.9, )"
-          },
           "Microcharts.Forms": {
             "target": "Package",
             "version": "[0.9.5.9, )"
@@ -6007,14 +5999,6 @@
           "Microsoft.NETCore.UniversalWindowsPlatform": {
             "target": "Package",
             "version": "[6.2.14, )"
-          },
-          "Microsoft.NETCore.UniversalWindowsPlatform": {
-            "target": "Package",
-            "version": "[6.2.14, )"
-          },
-          "Xamarin.Essentials": {
-            "target": "Package",
-            "version": "[1.7.5, )"
           },
           "Xamarin.Essentials": {
             "target": "Package",

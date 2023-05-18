@@ -4166,24 +4166,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\claud\\.nuget\\packages\\": {},
+    "C:\\Users\\mihal\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\claud\\Documents\\GitHub\\desktop-tutorial\\IngineriaProgramarii\\ProiectIP\\ProiectIP.iOS\\ProiectIP.iOS.csproj",
+      "projectUniqueName": "C:\\Users\\mihal\\Desktop\\IngineriaProgramarii\\ProiectIP\\ProiectIP.iOS\\ProiectIP.iOS.csproj",
       "projectName": "ProiectIP.iOS",
-      "projectPath": "C:\\Users\\claud\\Documents\\GitHub\\desktop-tutorial\\IngineriaProgramarii\\ProiectIP\\ProiectIP.iOS\\ProiectIP.iOS.csproj",
-      "packagesPath": "C:\\Users\\claud\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\claud\\Documents\\GitHub\\desktop-tutorial\\IngineriaProgramarii\\ProiectIP\\ProiectIP.iOS\\obj\\",
+      "projectPath": "C:\\Users\\mihal\\Desktop\\IngineriaProgramarii\\ProiectIP\\ProiectIP.iOS\\ProiectIP.iOS.csproj",
+      "packagesPath": "C:\\Users\\mihal\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mihal\\Desktop\\IngineriaProgramarii\\ProiectIP\\ProiectIP.iOS\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\claud\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mihal\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4197,8 +4197,8 @@
       "frameworks": {
         "xamarinios10": {
           "projectReferences": {
-            "C:\\Users\\claud\\Documents\\GitHub\\desktop-tutorial\\IngineriaProgramarii\\ProiectIP\\ProiectIP\\ProiectIP.csproj": {
-              "projectPath": "C:\\Users\\claud\\Documents\\GitHub\\desktop-tutorial\\IngineriaProgramarii\\ProiectIP\\ProiectIP\\ProiectIP.csproj"
+            "C:\\Users\\mihal\\Desktop\\IngineriaProgramarii\\ProiectIP\\ProiectIP\\ProiectIP.csproj": {
+              "projectPath": "C:\\Users\\mihal\\Desktop\\IngineriaProgramarii\\ProiectIP\\ProiectIP\\ProiectIP.csproj"
             }
           }
         }

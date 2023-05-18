@@ -25,11 +25,11 @@ androidgeneratejnimarshalmethods=false
 os=windows_nt
 androidincludedebugsymbols=true
 androidpackagenamingpolicy=lowercasecrc64
-_nugetassetstimestamp=638200124197827784
+_nugetassetstimestamp=638200146582140614
 typemapkind=strings-asm
 androidsupportedabis=arm64-v8a
 armeabi-v7a
 x86
 x86_64
 androidmanifestplaceholders=
-projectfullpath=c:\users\claud\documents\github\desktop-tutorial\ingineriaprogramarii\proiectip\proiectip.android\proiectip.android.csproj
+projectfullpath=c:\users\mihal\desktop\ingineriaprogramarii\proiectip\proiectip.android\proiectip.android.csproj

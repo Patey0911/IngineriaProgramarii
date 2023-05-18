@@ -67,11 +67,11 @@ namespace ProiectIP
                     if (user != null)
                     {
                         CNP_Pacient_Shared = txtUsername.Text;
-                        if (txtPassword.Text.Contains("ceva")&& user.parolaPacient.Contains("ceva"))
+                        if (txtPassword.Text.Contains("ceva") && user.parolaPacient.Contains("ceva"))
                             await Navigation.PushModalAsync(new UpdatePasswordPage(CNP_Pacient_Shared));
-                        else 
+                        else
                         {
-                            user.parolaPacient=AESRepository.DecryptAesManaged(user.parolaPacient);
+                            user.parolaPacient = AESRepository.DecryptAesManaged(user.parolaPacient);
                             //Navigate to Wellcom page after successfuly login    
                             //pass user email to welcom page
                             if (txtUsername.Text == user.cnpPacient && txtPassword.Text == user.parolaPacient)
@@ -83,16 +83,18 @@ namespace ProiectIP
                                 await App.Current.MainPage.DisplayAlert("Login Fail", "Please enter correct CNP and Password", "OK");
                         }
                     }
+                    else if (txtPassword.Text.Contains("ceva"))
+                    {
+                        Username_Ingrijitor = txtUsername.Text;
+                        await Navigation.PushModalAsync(new UpdatePasswordPage(Username_Ingrijitor));
+                    }
                     else if (txtUsername.Text == ingrijitor.numeIngrijitor && txtPassword.Text == AESRepository.DecryptAesManaged(ingrijitor.parolaIngrijitor))
                     {
                         Username_Ingrijitor = txtUsername.Text;
-                        if (txtPassword.Text.Contains("ceva"))
-                            await Navigation.PushModalAsync(new UpdatePasswordPage(Username_Ingrijitor));
-                        else
-                        {
-                            await Navigation.PushModalAsync(new MainPageIngrijitor());
-                            await App.Current.MainPage.DisplayAlert("Login Success", "", "Ok");
-                        }
+
+                        await Navigation.PushModalAsync(new MainPageIngrijitor());
+                        await App.Current.MainPage.DisplayAlert("Login Success", "", "Ok");
+
                     }
                     else
                     {

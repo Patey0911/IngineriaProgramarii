@@ -9,10 +9,21 @@
         
         <StackLayout 
             
-            Padding="40" 
+            Padding="20" 
             VerticalOptions="Center"
             HorizontalOptions="FillAndExpand">
-            
+
+            <Label  
+                Text="ElderGuard"
+                TextColor="Black"
+                FontAttributes="Bold"
+                FontSize="30"
+                HorizontalTextAlignment="Start"
+                HorizontalOptions="Start"
+                VerticalTextAlignment="Center"
+                Padding="100,0,50,100">
+            </Label>
+
             <Image 
                 Source="LoginIMG1.jpg" 
                 HeightRequest="200">

@@ -6,51 +6,135 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"    
              xmlns:dxc="https://schemas.devexpress.com/xamarin/2014/forms/charts">
     <ScrollView>
-        <StackLayout BackgroundColor="#add8e6" WidthRequest="600" Padding="0,0,0,0">
+        <StackLayout BackgroundColor="#add8e6" WidthRequest="600" Padding="10,40,10,400" Spacing="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
             <Frame BorderColor="Gray" CornerRadius="5" Padding="8" Margin="10,5">
                 <microcharts:ChartView x:Name="MyChart"  HeightRequest="300" WidthRequest="600"/>
             </Frame>
             <Label
-                x:Name="UltimaConusltatieLabel">
+                x:Name="UltimaConusltatieLabel"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                Padding="40,20,5,0">
             </Label>
             <Label
-                x:Name="afectiuniCroniceLabel">
+                x:Name="afectiuniCroniceLabel"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                Padding="40,5,5,0">
             </Label>
             <Label
-                x:Name="AlergiiLabel">
+                x:Name="AlergiiLabel"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                Padding="40,5,5,0">
             </Label>
             <Label
-                x:Name="DiagnosticLabel">
+                x:Name="DiagnosticLabel"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                Padding="40,5,5,0">
             </Label>
             <Label
-                x:Name="TratamentLabel">
+                x:Name="TratamentLabel"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                Padding="40,5,5,0">
             </Label>
             <Label
-                x:Name="TALabel">
+                x:Name="TALabel"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                Padding="40,5,5,0">
             </Label>
             <Label
-                x:Name="glicemieLabel">
+                x:Name="glicemieLabel"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                Padding="40,5,5,0">
             </Label>
             <Label
-                x:Name="greutateLabel">
+                x:Name="greutateLabel"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                Padding="40,5,5,0">
             </Label>
             <Label
-                x:Name="proximitateLabel">
+                x:Name="proximitateLabel"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                Padding="40,5,5,0">
             </Label>
             <Label
-                x:Name="pulsLabel">
+                x:Name="pulsLabel"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                Padding="40,5,5,0">
             </Label>
             <Label
-                x:Name="saturatieGazLabel">
+                x:Name="saturatieGazLabel"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                Padding="40,5,5,0">
             </Label>
             <Label
-                x:Name="tempAmbientalaLabel">
+                x:Name="tempAmbientalaLabel"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                Padding="40,5,5,0">
             </Label>
             <Label
-                x:Name="tempCorpLabel">
+                x:Name="tempCorpLabel"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                Padding="40,5,5,0">
             </Label>
             <Label
-                x:Name="umiditateLabel">
+                x:Name="umiditateLabel"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center"
+                Padding="40,5,5,40">
             </Label>
             <Button
                 VerticalOptions="End" 
@@ -66,6 +150,7 @@
                 xct:TouchEffect.LongPressCommand="{Binding TouchCommand}"
                 xct:TouchEffect.LongPressDuration="250" 
                 Margin="20,0"/>
+            <BoxView HeightRequest="20"></BoxView>
             <Button
                 VerticalOptions="End"
                 Text="Recomandari"

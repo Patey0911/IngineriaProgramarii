@@ -9,10 +9,11 @@
     <ScrollView>
         <StackLayout
             Padding="40" 
+            Orientation="Vertical"
             VerticalOptions="Center"
             HorizontalOptions="FillAndExpand">
             <Label
-                Text="Glicemie"
+                Text="Glicemie:"
                 FontSize="20"
                 FontAttributes="Bold"
                 TextColor="Black"
@@ -26,15 +27,15 @@
                 x:Name="txtGlicemie"
                 TextColor="Black" 
                 FontSize="20"
-                Margin="15,0,0,0"
+                Margin="103,0,0,0"
                 Keyboard="Numeric"
                 TranslationY="-80"
-                HorizontalOptions="EndAndExpand"
+                HorizontalOptions="FillAndExpand"
                 HorizontalTextAlignment="Start">
             </Entry>
 
             <Label
-                Text="Tensiune Arteriala"
+                Text="Tensiune Arteriala:"
                 FontSize="20"
                 FontAttributes="Bold"
                 TextColor="Black"
@@ -48,15 +49,15 @@
                 x:Name="txtTensiuneArteriala"
                 TextColor="Black" 
                 FontSize="20"
-                Margin="15,0,0,0"
+                Margin="190,0,0,0"
                 Keyboard="Numeric"
                 TranslationY="-80"
-                HorizontalOptions="EndAndExpand"
+                HorizontalOptions="FillAndExpand"
                 HorizontalTextAlignment="Start">
             </Entry>
 
             <Label
-                Text="Greutate"
+                Text="Greutate:"
                 FontSize="20"
                 FontAttributes="Bold"
                 TextColor="Black"
@@ -70,10 +71,10 @@
                 x:Name="txtGreutate"
                 TextColor="Black" 
                 FontSize="20"
-                Margin="15,0,0,0"
+                Margin="103,0,0,0"
                 Keyboard="Numeric"
                 TranslationY="-80"                
-                HorizontalOptions="EndAndExpand"
+                HorizontalOptions="FillAndExpand"
                 HorizontalTextAlignment="Start">
             </Entry>
 

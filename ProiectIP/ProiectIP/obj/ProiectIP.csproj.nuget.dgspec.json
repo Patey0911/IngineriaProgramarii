@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mihal\\Desktop\\ProiectIP\\ProiectIP\\ProiectIP.csproj": {}
+    "C:\\Users\\claud\\Documents\\GitHub\\desktop-tutorial\\IngineriaProgramarii\\ProiectIP\\ProiectIP\\ProiectIP.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mihal\\Desktop\\ProiectIP\\ProiectIP\\ProiectIP.csproj": {
+    "C:\\Users\\claud\\Documents\\GitHub\\desktop-tutorial\\IngineriaProgramarii\\ProiectIP\\ProiectIP\\ProiectIP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mihal\\Desktop\\ProiectIP\\ProiectIP\\ProiectIP.csproj",
+        "projectUniqueName": "C:\\Users\\claud\\Documents\\GitHub\\desktop-tutorial\\IngineriaProgramarii\\ProiectIP\\ProiectIP\\ProiectIP.csproj",
         "projectName": "ProiectIP",
-        "projectPath": "C:\\Users\\mihal\\Desktop\\ProiectIP\\ProiectIP\\ProiectIP.csproj",
-        "packagesPath": "C:\\Users\\mihal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mihal\\Desktop\\ProiectIP\\ProiectIP\\obj\\",
+        "projectPath": "C:\\Users\\claud\\Documents\\GitHub\\desktop-tutorial\\IngineriaProgramarii\\ProiectIP\\ProiectIP\\ProiectIP.csproj",
+        "packagesPath": "C:\\Users\\claud\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\claud\\Documents\\GitHub\\desktop-tutorial\\IngineriaProgramarii\\ProiectIP\\ProiectIP\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\mihal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\claud\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

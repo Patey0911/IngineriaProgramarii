@@ -46,7 +46,6 @@ namespace ProiectIP
             proximitateLabel.Text = "Proximitate: " + analysislist[0].proximitate;
             pulsLabel.Text = "Puls: " + analysislist[0].puls;
             saturatieGazLabel.Text = "Saturatie Gaz: " + analysislist[0].saturatieGaz;
-            tempAmbientalaLabel.Text = "Temperatura Ambientala: " + analysislist[0].tempAmbientala;
             tempCorpLabel.Text="Temperatura Corporala: " + analysislist[0].tempCorp;
             umiditateLabel.Text = "Umiditate: " + analysislist[0].umiditate;
         }
@@ -67,40 +66,15 @@ namespace ProiectIP
                 else if (int.Parse(data.minGreutate) > int.Parse(AESRepository.DecryptAesManaged(analysislist[0].greutate)))
                     await App.Current.MainPage.DisplayAlert("Alerta !!!", "Greutate prea mica", "OK");
 
-                if (int.Parse(data.maxProximitate) < int.Parse(analysislist[0].proximitate))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Proximitate prea mare", "OK");
-                else if (int.Parse(data.minProximitate) > int.Parse(analysislist[0].proximitate))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Proximitate prea mica", "OK");
-
-                if (int.Parse(data.maxPuls) < int.Parse(analysislist[0].puls))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Puls prea mare", "OK");
-                else if (int.Parse(data.minPuls) > int.Parse(analysislist[0].puls))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Puls prea mic", "OK");
-
-                if (int.Parse(data.maxSaturatieGaz) < int.Parse(analysislist[0].saturatieGaz))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Saturatie Gaz prea mare", "OK");
-                else if (int.Parse(data.minSaturatieGaz) > int.Parse(analysislist[0].saturatieGaz))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Saturatie Gaz prea mica", "OK");
-
-                if (int.Parse(data.maxTA) < int.Parse(AESRepository.DecryptAesManaged(analysislist[0].TA)))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Tensiune prea mare", "OK");
-                else if (int.Parse(data.minTA) > int.Parse(AESRepository.DecryptAesManaged(analysislist[0].TA)))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Tensiune prea mica", "OK");
-
-                if (float.Parse(data.maxTempAmbientala) < float.Parse(analysislist[0].tempAmbientala))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Ambientala prea mare", "OK");
-                else if (float.Parse(data.minTempAmbientala) > float.Parse(analysislist[0].tempAmbientala))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Ambientala prea mica", "OK");
-
                 if (float.Parse(data.maxTempCorp) < float.Parse(analysislist[0].tempCorp))
                     await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Corporala prea mare", "OK");
                 else if (float.Parse(data.minTempCorp) > float.Parse(analysislist[0].tempCorp))
                     await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Corporala prea mica", "OK");
 
-                if (int.Parse(data.maxUmiditate) < int.Parse(analysislist[0].umiditate))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Umiditate prea mare", "OK");
-                else if (int.Parse(data.minUmiditate) > int.Parse(analysislist[0].umiditate))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Umiditate prea mica", "OK");
+                if (int.Parse(data.maxTA) < int.Parse(AESRepository.DecryptAesManaged(analysislist[0].TA)))
+                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Tensiune prea mare", "OK");
+                else if (int.Parse(data.minTA) > int.Parse(AESRepository.DecryptAesManaged(analysislist[0].TA)))
+                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Tensiune prea mica", "OK");      
             }
         }
         protected override async void OnAppearing()
@@ -143,15 +117,45 @@ namespace ProiectIP
             }
         }
 
-        private void CreateData()
+        private async void CreateData()
         {
-            Random rnd = new Random();
+            var reflist = await ValoriRefRepository.GetAllValoriSenzoriByCNP(Login.CNP_Pacient_Shared);
+            var analysislist = await ValoriSenzoriRepository.GetAllValoriSenzoriByCNP(Login.CNP_Pacient_Shared);
+
+            tempAmbientalaLabel.Text = "Temperatura Ambientala: " + analysislist[0].tempAmbientala;
+
+            foreach (var data in reflist)
+            {
+                if (int.Parse(data.maxPuls) < int.Parse(analysislist[0].puls))
+                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Puls prea mare", "OK");
+                else if (int.Parse(data.minPuls) > int.Parse(analysislist[0].puls))
+                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Puls prea mic", "OK");
+
+                if (int.Parse(data.maxSaturatieGaz) < int.Parse(analysislist[0].saturatieGaz))
+                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Saturatie Gaz prea mare", "OK");
+                else if (int.Parse(data.minSaturatieGaz) > int.Parse(analysislist[0].saturatieGaz))
+                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Saturatie Gaz prea mica", "OK");
+
+                if (float.Parse(data.maxTempAmbientala) < float.Parse(analysislist[0].tempAmbientala)/10)
+                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Ambientala prea mare", "OK");
+                else if (float.Parse(data.minTempAmbientala) > float.Parse(analysislist[0].tempAmbientala)/10)
+                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Ambientala prea mica", "OK");
+
+                if (int.Parse(data.maxUmiditate) < int.Parse(analysislist[0].umiditate))
+                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Umiditate prea mare", "OK");
+                else if (int.Parse(data.minUmiditate) > int.Parse(analysislist[0].umiditate))
+                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Umiditate prea mica", "OK");
+            }
+
+            /*Random rnd = new Random();
             num = rnd.Next();
             num = num % 200;
+            */
+            var num = float.Parse(analysislist[0].tempAmbientala);
             x += 200;
-            if (num < 100)
+            if (num < 20)
                 Culoare = "#05ed20";
-            else if (num < 200)
+            else if (num < 22)
                 Culoare = "#edd605";
             else
             {
@@ -164,8 +168,8 @@ namespace ProiectIP
                     ReturningData = "Dummy Data",
                     NotificationId = 1337
                 };
-                LocalNotificationCenter.Current.Show(notification);
-                DisplayAlert(notification.Title, notification.Description,"Ok");
+                //LocalNotificationCenter.Current.Show(notification);
+                //DisplayAlert(notification.Title, notification.Description,"Ok");
             }
             entries.Add(
             new ChartEntry(num)

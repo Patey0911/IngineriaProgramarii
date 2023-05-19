@@ -26,6 +26,7 @@ namespace ProiectIP
                 TA = item.Object.TA,
                 glicemie = item.Object.glicemie,
                 greutate = item.Object.greutate,
+                lumina=item.Object.lumina,
                 proximitate = item.Object.proximitate,
                 puls = item.Object.puls,
                 saturatieGaz=item.Object.saturatieGaz,

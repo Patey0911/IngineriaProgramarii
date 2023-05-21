@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DbKqqM13C2AISPc2FWok4KmDnevmPN11qwVDchXQ8QEyIDmxhtb3Us/1JKwH0vLGMQnJpb8bkkrqd4MGiYYISQ==",
+  "dgSpecHash": "LxBrTmyjNx3CddofZEAYi779vCYY7FWWv4mjH8x94oat0O2V3/RunThR3ZyFDGLc6gLVZMDcWsxvrN2r18Nokg==",
   "success": false,
   "projectFilePath": "C:\\Users\\mihal\\Desktop\\IngineriaProgramarii\\ProiectIP\\ProiectIP.Android\\ProiectIP.Android.csproj",
   "expectedPackageFiles": [
@@ -113,7 +113,7 @@
       "message": "Version conflict detected for Xamarin.AndroidX.Core. Install/reference Xamarin.AndroidX.Core 1.9.0.2 directly to project ProiectIP.Android to resolve this issue. \r\n ProiectIP.Android -> ProiectIP -> Plugin.LocalNotification 10.1.4 -> Xamarin.AndroidX.Core (>= 1.9.0.2) \r\n ProiectIP.Android -> ProiectIP -> Xamarin.Forms 5.0.0.2578 -> Xamarin.AndroidX.Core (>= 1.6.0.1 && <= 1.9.0.1).",
       "libraryId": "Xamarin.AndroidX.Core",
       "targetGraphs": [
-        "MonoAndroid,Version=v13.0"
+        "MonoAndroid,Version=v12.0"
       ]
     }
   ]

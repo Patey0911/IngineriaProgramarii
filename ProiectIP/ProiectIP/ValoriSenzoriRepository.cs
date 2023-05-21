@@ -12,7 +12,7 @@ namespace ProiectIP
 {
     internal class ValoriSenzoriRepository
     {
-        static FirebaseClient firebaseClient = new FirebaseClient("https://real-time-database-63913-default-rtdb.europe-west1.firebasedatabase.app/");
+        static FirebaseClient firebaseClient = new FirebaseClient("https://ambient-assisted-living-918d2-default-rtdb.europe-west1.firebasedatabase.app/");
         public static async Task<List<ValoriSenzoriModel>> GetAllValoriSenzoriByCNP(string CNP)
         {
             var analysislist = (await firebaseClient

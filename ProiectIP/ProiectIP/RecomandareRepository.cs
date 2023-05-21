@@ -12,7 +12,7 @@ namespace ProiectIP
 {
     internal class RecomandareRepository
     {
-        static string URL_base = "https://real-time-database-63913-default-rtdb.europe-west1.firebasedatabase.app/";
+        static string URL_base = "https://ambient-assisted-living-918d2-default-rtdb.europe-west1.firebasedatabase.app/";
         static FirebaseClient firebaseClient = new FirebaseClient(URL_base);
         public static async Task<List<String>> GetAllRecomandariNameByCNP(string CNP)
         {

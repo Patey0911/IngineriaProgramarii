@@ -46,6 +46,7 @@ namespace ProiectIP
             proximitateLabel.Text = "Proximitate: " + analysislist[0].proximitate;
             pulsLabel.Text = "Puls: " + analysislist[0].puls;
             saturatieGazLabel.Text = "Saturatie Gaz: " + analysislist[0].saturatieGaz;
+            tempAmbientalaLabel.Text = "Temperatura Ambientala: " + analysislist[0].tempAmbientala;
             tempCorpLabel.Text="Temperatura Corporala: " + analysislist[0].tempCorp;
             umiditateLabel.Text = "Umiditate: " + analysislist[0].umiditate;
         }
@@ -119,10 +120,24 @@ namespace ProiectIP
 
         private async void CreateData()
         {
+            var lista2 = await AnalysisRepository.GetAllAnalysisByCNP(Login.CNP_Pacient_Shared);
             var reflist = await ValoriRefRepository.GetAllValoriSenzoriByCNP(Login.CNP_Pacient_Shared);
             var analysislist = await ValoriSenzoriRepository.GetAllValoriSenzoriByCNP(Login.CNP_Pacient_Shared);
 
+            UltimaConusltatieLabel.Text = "Ultima Consultatie: " + lista2[0].UltimaConsultatie.ToString();
+            afectiuniCroniceLabel.Text = "Afectiuni Cronice: " + lista2[0].afectiuniCronice.ToString();
+            AlergiiLabel.Text = "Alergii: " + lista2[0].alergii.ToString();
+            DiagnosticLabel.Text = "Diagnostic: " + lista2[0].diagnostic.ToString();
+            TratamentLabel.Text = "Tratament: " + lista2[0].tratament.ToString();
+            TALabel.Text = "Tensiune Arteriala: " + AESRepository.DecryptAesManaged(analysislist[0].TA);
+            glicemieLabel.Text = "Glicemie: " + AESRepository.DecryptAesManaged(analysislist[0].glicemie);
+            greutateLabel.Text = "Greutate: " + AESRepository.DecryptAesManaged(analysislist[0].greutate);
+            proximitateLabel.Text = "Proximitate: " + analysislist[0].proximitate;
+            pulsLabel.Text = "Puls: " + analysislist[0].puls;
+            saturatieGazLabel.Text = "Saturatie Gaz: " + analysislist[0].saturatieGaz;
             tempAmbientalaLabel.Text = "Temperatura Ambientala: " + analysislist[0].tempAmbientala;
+            tempCorpLabel.Text = "Temperatura Corporala: " + analysislist[0].tempCorp;
+            umiditateLabel.Text = "Umiditate: " + analysislist[0].umiditate;
 
             foreach (var data in reflist)
             {

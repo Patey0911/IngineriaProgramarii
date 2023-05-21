@@ -104,7 +104,7 @@
                 BorderColor="Black"
                 CornerRadius="50"
                 Clicked="Button_Clicked_1"
-                TranslationY="30"
+                TranslationY="25"
                 xct:TouchEffect.LongPressCommand="{Binding TouchCommand}"
                 xct:TouchEffect.LongPressDuration="250"
                 >

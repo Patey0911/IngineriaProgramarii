@@ -13,7 +13,7 @@ namespace ProiectIP
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FormularPage : ContentPage
     {
-        private string newTA, newGlicemie, newGreutate;
+        private string newTA, newGlicemie, newGreutate, newTempCorp;
         public FormularPage()
         {
             InitializeComponent();
@@ -63,7 +63,14 @@ namespace ProiectIP
                 foreach (var user in await analysislist)
                     newGreutate = user.greutate;
             }
-            await ValoriSenzoriRepository.UpdateStatus(Login.CNP_Pacient_Shared, newTA, newGlicemie, newGreutate);
+            if (txttempCorp.Text != null)
+                newTempCorp = AESRepository.EncryptAesManaged(txttempCorp.Text);
+            else
+            {
+                foreach (var user in await analysislist)
+                    newTempCorp = user.tempCorp;
+            }
+            await ValoriSenzoriRepository.UpdateStatus(Login.CNP_Pacient_Shared, newTA, newGlicemie, newGreutate,newTempCorp);
             await BackToMainPagePacient();
         }
         async Task BackToMainPagePacient()

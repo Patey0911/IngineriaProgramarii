@@ -14,7 +14,7 @@ namespace ProiectIP
     public partial class FormularIngrijitorPage : ContentPage
     {
         private string CNPPacient_Ales;
-        private string newTA, newGlicemie, newGreutate;
+        private string newTA, newGlicemie, newGreutate, newtempCorp;
         public FormularIngrijitorPage(string CNPPacient)
         {
             InitializeComponent();
@@ -71,7 +71,16 @@ namespace ProiectIP
                 foreach (var user in await analysislist)
                     newGreutate = user.greutate;
             }
-            await ValoriSenzoriRepository.UpdateStatus(CNPPacient_Ales.Substring(5), newTA, newGlicemie, newGreutate);
+            if (txttempCorp.Text != null)
+                newtempCorp = AESRepository.EncryptAesManaged(txttempCorp.Text);
+            else
+            {
+                foreach (var user in await analysislist)
+                    newtempCorp = user.tempCorp;
+            }
+
+
+            await ValoriSenzoriRepository.UpdateStatus(CNPPacient_Ales.Substring(5), newTA, newGlicemie, newGreutate, newtempCorp);
             await BackToMainPageIngrijitor();
         }
 

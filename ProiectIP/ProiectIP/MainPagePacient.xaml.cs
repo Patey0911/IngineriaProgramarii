@@ -46,7 +46,7 @@ namespace ProiectIP
             pulsLabel.Text = "Puls: " + analysislist[0].puls;
             saturatieGazLabel.Text = "Saturatie Gaz: " + analysislist[0].saturatieGaz;
             tempAmbientalaLabel.Text = "Temperatura Ambientala: " + analysislist[0].tempAmbientala;
-            tempCorpLabel.Text="Temperatura Corporala: " + analysislist[0].tempCorp;
+            tempCorpLabel.Text="Temperatura Corporala: " + AESRepository.DecryptAesManaged(analysislist[0].tempCorp);
             umiditateLabel.Text = "Umiditate: " + analysislist[0].umiditate;
 
             prev_TA= int.Parse(AESRepository.DecryptAesManaged(analysislist[0].TA));
@@ -54,7 +54,7 @@ namespace ProiectIP
             prev_greutate = int.Parse(AESRepository.DecryptAesManaged(analysislist[0].greutate));
             prev_puls = int.Parse(analysislist[0].puls);
             prev_tempAmbientala = float.Parse(analysislist[0].tempAmbientala);
-            prev_tempCorp = float.Parse(analysislist[0].tempCorp);
+            prev_tempCorp = float.Parse(AESRepository.DecryptAesManaged(analysislist[0].tempCorp));
         }
         private async void GetAllRefDataAndCompare()
         {
@@ -118,13 +118,13 @@ namespace ProiectIP
                     prev_greutate = int.Parse(AESRepository.DecryptAesManaged(analysislist[0].greutate));
                 }
 
-                if (prev_tempCorp != float.Parse(analysislist[0].tempCorp) / 10)
+                if (prev_tempCorp != float.Parse(AESRepository.DecryptAesManaged(analysislist[0].tempCorp)) / 10)
                 {
-                    if (float.Parse(data.maxTempCorp) / 10 < float.Parse(analysislist[0].tempCorp) / 10)
+                    if (float.Parse(data.maxTempCorp) / 10 < float.Parse(AESRepository.DecryptAesManaged(analysislist[0].tempCorp)) / 10)
                         await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Corporala prea mare", "OK");
-                    else if (float.Parse(data.minTempCorp) / 10 > float.Parse(analysislist[0].tempCorp) / 10)
+                    else if (float.Parse(data.minTempCorp) / 10 > float.Parse(AESRepository.DecryptAesManaged(analysislist[0].tempCorp)) / 10)
                         await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Corporala prea mica", "OK");
-                    prev_tempCorp = float.Parse(analysislist[0].tempCorp) / 10;
+                    prev_tempCorp = float.Parse(AESRepository.DecryptAesManaged(analysislist[0].tempCorp)) / 10;
                 }
 
                 if (prev_TA != int.Parse(AESRepository.DecryptAesManaged(analysislist[0].TA)))
@@ -133,6 +133,7 @@ namespace ProiectIP
                         await App.Current.MainPage.DisplayAlert("Alerta !!!", "Tensiune prea mare", "OK");
                     else if (int.Parse(data.minTA) > int.Parse(AESRepository.DecryptAesManaged(analysislist[0].TA)))
                         await App.Current.MainPage.DisplayAlert("Alerta !!!", "Tensiune prea mica", "OK");
+                    prev_TA = int.Parse(AESRepository.DecryptAesManaged(analysislist[0].TA));
                 }
             }
         }
@@ -192,7 +193,7 @@ namespace ProiectIP
             pulsLabel.Text = "Puls: " + analysislist[0].puls;
             saturatieGazLabel.Text = "Saturatie Gaz: " + analysislist[0].saturatieGaz;
             tempAmbientalaLabel.Text = "Temperatura Ambientala: " + analysislist[0].tempAmbientala;
-            tempCorpLabel.Text = "Temperatura Corporala: " + analysislist[0].tempCorp;
+            tempCorpLabel.Text = "Temperatura Corporala: " + AESRepository.DecryptAesManaged(analysislist[0].tempCorp);
             umiditateLabel.Text = "Umiditate: " + analysislist[0].umiditate;
 
             foreach (var data in reflist)
@@ -216,13 +217,13 @@ namespace ProiectIP
                 else if (int.Parse(data.minUmiditate) > int.Parse(analysislist[0].umiditate))
                     await App.Current.MainPage.DisplayAlert("Alerta !!!", "Umiditate prea mica", "OK");
 
-                if (prev_tempAmbientala != float.Parse(analysislist[0].tempAmbientala) / 10)
+                if (prev_tempAmbientala != float.Parse(analysislist[0].tempAmbientala)/10)
                 {
-                    if (float.Parse(data.maxTempAmbientala) / 10 < float.Parse(analysislist[0].tempAmbientala)/10)
+                    if (float.Parse(data.maxTempAmbientala) / 10 < float.Parse(analysislist[0].tempAmbientala) / 10)
                         await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Ambientala prea mare", "OK");
                     else if (float.Parse(data.minTempAmbientala) / 10 > float.Parse(analysislist[0].tempAmbientala) / 10)
                         await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Ambientala prea mica", "OK");
-                    prev_tempAmbientala = float.Parse(analysislist[0].tempAmbientala)/10;
+                    prev_tempAmbientala = float.Parse(analysislist[0].tempAmbientala) / 10;
                 }
 
                 if (prev_glicemie != int.Parse(AESRepository.DecryptAesManaged(analysislist[0].glicemie)))
@@ -243,13 +244,13 @@ namespace ProiectIP
                     prev_greutate = int.Parse(AESRepository.DecryptAesManaged(analysislist[0].greutate));
                 }
 
-                if (prev_tempCorp != float.Parse(analysislist[0].tempCorp)/10)
+                if (prev_tempCorp != float.Parse(AESRepository.DecryptAesManaged(analysislist[0].tempCorp))/10)
                 {
-                    if (float.Parse(data.maxTempCorp)/10 < float.Parse(analysislist[0].tempCorp) / 10)
+                    if (float.Parse(data.maxTempCorp)/10 < float.Parse(AESRepository.DecryptAesManaged(analysislist[0].tempCorp)) / 10)
                         await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Corporala prea mare", "OK");
-                    else if (float.Parse(data.minTempCorp)/10 > float.Parse(analysislist[0].tempCorp) / 10)
+                    else if (float.Parse(data.minTempCorp)/10 > float.Parse(AESRepository.DecryptAesManaged(analysislist[0].tempCorp)) / 10)
                         await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Corporala prea mica", "OK");
-                    prev_tempCorp = float.Parse(analysislist[0].tempCorp) / 10;
+                    prev_tempCorp = float.Parse(AESRepository.DecryptAesManaged(analysislist[0].tempCorp)) / 10;
                 }
 
                 if (prev_TA != int.Parse(AESRepository.DecryptAesManaged(analysislist[0].TA)))

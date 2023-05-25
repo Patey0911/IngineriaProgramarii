@@ -46,7 +46,7 @@
                 x:Name="txtTensiuneArteriala"
                 TextColor="Black" 
                 FontSize="20"
-                Margin="197,0,0,0"
+                Margin="200,0,0,0"
                 Keyboard="Numeric"
                 TranslationY="-80"
                 HorizontalOptions="FillAndExpand"
@@ -70,6 +70,29 @@
                 FontSize="20"
                 Margin="107,0,0,0"
                 Keyboard="Numeric"
+                TranslationY="-80"                
+                HorizontalOptions="FillAndExpand"
+                HorizontalTextAlignment="Start">
+            </Entry>
+
+            <Label
+                Text="Temperatura:"
+                FontSize="20"
+                FontAttributes="Bold"
+                TextColor="Black"
+                HorizontalTextAlignment="Start"
+                HorizontalOptions="Start"
+                VerticalTextAlignment="Center"
+                TranslationX="20"
+                TranslationY="-35">
+            </Label>
+
+            <Entry
+                x:Name="txttempCorp"
+                TextColor="Black" 
+                FontSize="20"
+                Margin="145,0,0,0"
+                Keyboard="Default"
                 TranslationY="-80"                
                 HorizontalOptions="FillAndExpand"
                 HorizontalTextAlignment="Start">

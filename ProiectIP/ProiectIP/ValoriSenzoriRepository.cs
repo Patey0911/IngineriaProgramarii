@@ -36,7 +36,7 @@ namespace ProiectIP
             }).ToList();
             return analysislist;
         }
-        public static async Task UpdateStatus(string cnpPacient, string newTA, string newglicemie, string newgreutate)
+        public static async Task UpdateStatus(string cnpPacient, string newTA, string newglicemie, string newgreutate, string newtempcorp)
         {
             var toUpdateStatus = (await firebaseClient
               .Child("ValoriSenzori")
@@ -47,6 +47,7 @@ namespace ProiectIP
             toUpdateStatus.Object.glicemie = newglicemie;
             toUpdateStatus.Object.TA = newTA;
             toUpdateStatus.Object.greutate = newgreutate;
+            toUpdateStatus.Object.tempCorp = newtempcorp;
 
             await firebaseClient
               .Child("ValoriSenzori")

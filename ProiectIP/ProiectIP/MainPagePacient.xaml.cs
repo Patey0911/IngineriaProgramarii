@@ -17,18 +17,17 @@ namespace ProiectIP
     [XamlCompilation(XamlCompilationOptions.Compile)]
 
     public partial class MainPagePacient : ContentPage
-    { 
+    {
+        private int prev_TA, prev_glicemie, prev_greutate, prev_puls;
+        private float  prev_tempAmbientala, prev_tempCorp;
+        private string prev_saturatieGaz;
         int x = 0;
         private List<Microcharts.ChartEntry> entries = new List<Microcharts.ChartEntry>();
         private String Culoare;
-        int num;
         public MainPagePacient()
         {
             InitializeComponent();
-            CreateData();
-
-           // MyChart.Chart = new LineChart() { };
-            //MyChart.BackgroundColor= Color.Black;
+            GetAllDataAndCompare();
         } 
         private async void GetAllAnalysisByCNP()
         {
@@ -49,6 +48,13 @@ namespace ProiectIP
             tempAmbientalaLabel.Text = "Temperatura Ambientala: " + analysislist[0].tempAmbientala;
             tempCorpLabel.Text="Temperatura Corporala: " + analysislist[0].tempCorp;
             umiditateLabel.Text = "Umiditate: " + analysislist[0].umiditate;
+
+            prev_TA= int.Parse(AESRepository.DecryptAesManaged(analysislist[0].TA));
+            prev_glicemie = int.Parse(AESRepository.DecryptAesManaged(analysislist[0].glicemie));
+            prev_greutate = int.Parse(AESRepository.DecryptAesManaged(analysislist[0].greutate));
+            prev_puls = int.Parse(analysislist[0].puls);
+            prev_tempAmbientala = float.Parse(analysislist[0].tempAmbientala);
+            prev_tempCorp = float.Parse(analysislist[0].tempCorp);
         }
         private async void GetAllRefDataAndCompare()
         {
@@ -57,29 +63,82 @@ namespace ProiectIP
 
             foreach (var data in reflist)
             {
-                if(int.Parse(data.maxGlicemie) < int.Parse(AESRepository.DecryptAesManaged(analysislist[0].glicemie)))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Glicemie prea mare", "OK");
-                else if (int.Parse(data.minGlicemie) > int.Parse(AESRepository.DecryptAesManaged(analysislist[0].glicemie)))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Glicemie prea mica", "OK");
+                prev_puls = 0;
+                prev_TA=0;
+                prev_glicemie=0;   
+                prev_greutate=0;
+                prev_puls=0;
+                prev_tempAmbientala=0;
+                prev_tempCorp=0;
+                prev_saturatieGaz = "false";
+                if (prev_puls != int.Parse(analysislist[0].puls))
+                {
+                    if (int.Parse(data.maxPuls) < int.Parse(analysislist[0].puls))
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Puls prea mare", "OK");
+                    else if (int.Parse(data.minPuls) > int.Parse(analysislist[0].puls))
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Puls prea mic", "OK");
+                    prev_puls = int.Parse(analysislist[0].puls);
+                }
 
-                if (int.Parse(data.maxGreutate) < int.Parse(AESRepository.DecryptAesManaged(analysislist[0].greutate)))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Greutate prea mare", "OK");
-                else if (int.Parse(data.minGreutate) > int.Parse(AESRepository.DecryptAesManaged(analysislist[0].greutate)))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Greutate prea mica", "OK");
+                if (analysislist[0].saturatieGaz == "true" && prev_saturatieGaz != analysislist[0].saturatieGaz)
+                {
+                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Saturatie Gaz", "OK");
+                }
+                prev_saturatieGaz = analysislist[0].saturatieGaz;
 
-                if (float.Parse(data.maxTempCorp) < float.Parse(analysislist[0].tempCorp))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Corporala prea mare", "OK");
-                else if (float.Parse(data.minTempCorp) > float.Parse(analysislist[0].tempCorp))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Corporala prea mica", "OK");
+                if (int.Parse(data.maxUmiditate) < int.Parse(analysislist[0].umiditate))
+                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Umiditate prea mare", "OK");
+                else if (int.Parse(data.minUmiditate) > int.Parse(analysislist[0].umiditate))
+                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Umiditate prea mica", "OK");
 
-                if (int.Parse(data.maxTA) < int.Parse(AESRepository.DecryptAesManaged(analysislist[0].TA)))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Tensiune prea mare", "OK");
-                else if (int.Parse(data.minTA) > int.Parse(AESRepository.DecryptAesManaged(analysislist[0].TA)))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Tensiune prea mica", "OK");      
+                if (prev_tempAmbientala != float.Parse(analysislist[0].tempAmbientala) / 10)
+                {
+                    if (float.Parse(data.maxTempAmbientala) / 10 < float.Parse(analysislist[0].tempAmbientala) / 10)
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Ambientala prea mare", "OK");
+                    else if (float.Parse(data.minTempAmbientala) / 10 > float.Parse(analysislist[0].tempAmbientala) / 10)
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Ambientala prea mica", "OK");
+                    prev_tempAmbientala = float.Parse(analysislist[0].tempAmbientala) / 10;
+                }
+
+                if (prev_glicemie != int.Parse(AESRepository.DecryptAesManaged(analysislist[0].glicemie)))
+                {
+                    if (int.Parse(data.maxGlicemie) < int.Parse(AESRepository.DecryptAesManaged(analysislist[0].glicemie)))
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Glicemie prea mare", "OK");
+                    else if (int.Parse(data.minGlicemie) > int.Parse(AESRepository.DecryptAesManaged(analysislist[0].glicemie)))
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Glicemie prea mica", "OK");
+                    prev_glicemie = int.Parse(AESRepository.DecryptAesManaged(analysislist[0].glicemie));
+                }
+
+                if (prev_greutate != int.Parse(AESRepository.DecryptAesManaged(analysislist[0].greutate)))
+                {
+                    if (int.Parse(data.maxGreutate) < int.Parse(AESRepository.DecryptAesManaged(analysislist[0].greutate)))
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Greutate prea mare", "OK");
+                    else if (int.Parse(data.minGreutate) > int.Parse(AESRepository.DecryptAesManaged(analysislist[0].greutate)))
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Greutate prea mica", "OK");
+                    prev_greutate = int.Parse(AESRepository.DecryptAesManaged(analysislist[0].greutate));
+                }
+
+                if (prev_tempCorp != float.Parse(analysislist[0].tempCorp) / 10)
+                {
+                    if (float.Parse(data.maxTempCorp) / 10 < float.Parse(analysislist[0].tempCorp) / 10)
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Corporala prea mare", "OK");
+                    else if (float.Parse(data.minTempCorp) / 10 > float.Parse(analysislist[0].tempCorp) / 10)
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Corporala prea mica", "OK");
+                    prev_tempCorp = float.Parse(analysislist[0].tempCorp) / 10;
+                }
+
+                if (prev_TA != int.Parse(AESRepository.DecryptAesManaged(analysislist[0].TA)))
+                {
+                    if (int.Parse(data.maxTA) < int.Parse(AESRepository.DecryptAesManaged(analysislist[0].TA)))
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Tensiune prea mare", "OK");
+                    else if (int.Parse(data.minTA) > int.Parse(AESRepository.DecryptAesManaged(analysislist[0].TA)))
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Tensiune prea mica", "OK");
+                }
             }
         }
         protected override async void OnAppearing()
         {
+            GetAllAnalysisByCNP();
             GetAllRefDataAndCompare();
             String Internet_Status = Connectivity.NetworkAccess.ToString();
             while (Internet_Status == "None" || Internet_Status == "Local")
@@ -93,12 +152,9 @@ namespace ProiectIP
             base.OnAppearing();
             Device.StartTimer(TimeSpan.FromSeconds(2), () =>
             {
-                CreateData(); // Apeleaza functia
+                GetAllDataAndCompare(); // Apeleaza functia
                 return true; // Continua sa apeleze functia la fiecare interval
-
             });
-
-            GetAllAnalysisByCNP();
         }
         async Task GoToFormularPage()
         {
@@ -118,7 +174,7 @@ namespace ProiectIP
             }
         }
 
-        private async void CreateData()
+        private async void GetAllDataAndCompare()
         {
             var lista2 = await AnalysisRepository.GetAllAnalysisByCNP(Login.CNP_Pacient_Shared);
             var reflist = await ValoriRefRepository.GetAllValoriSenzoriByCNP(Login.CNP_Pacient_Shared);
@@ -141,50 +197,103 @@ namespace ProiectIP
 
             foreach (var data in reflist)
             {
-                if (int.Parse(data.maxPuls) < int.Parse(analysislist[0].puls))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Puls prea mare", "OK");
-                else if (int.Parse(data.minPuls) > int.Parse(analysislist[0].puls))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Puls prea mic", "OK");
+                if (prev_puls != int.Parse(analysislist[0].puls))
+                {
+                    if (int.Parse(data.maxPuls) < int.Parse(analysislist[0].puls))
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Puls prea mare", "OK");
+                    else if (int.Parse(data.minPuls) > int.Parse(analysislist[0].puls))
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Puls prea mic", "OK");
+                }
 
-                if (int.Parse(data.maxSaturatieGaz) < int.Parse(analysislist[0].saturatieGaz))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Saturatie Gaz prea mare", "OK");
-                else if (int.Parse(data.minSaturatieGaz) > int.Parse(analysislist[0].saturatieGaz))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Saturatie Gaz prea mica", "OK");
-
-                if (float.Parse(data.maxTempAmbientala) < float.Parse(analysislist[0].tempAmbientala)/10)
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Ambientala prea mare", "OK");
-                else if (float.Parse(data.minTempAmbientala) > float.Parse(analysislist[0].tempAmbientala)/10)
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Ambientala prea mica", "OK");
+                if (analysislist[0].saturatieGaz == "true" && prev_saturatieGaz != analysislist[0].saturatieGaz)
+                {
+                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Saturatie Gaz", "OK");
+                }
+                prev_saturatieGaz = analysislist[0].saturatieGaz;
 
                 if (int.Parse(data.maxUmiditate) < int.Parse(analysislist[0].umiditate))
                     await App.Current.MainPage.DisplayAlert("Alerta !!!", "Umiditate prea mare", "OK");
                 else if (int.Parse(data.minUmiditate) > int.Parse(analysislist[0].umiditate))
                     await App.Current.MainPage.DisplayAlert("Alerta !!!", "Umiditate prea mica", "OK");
+
+                if (prev_tempAmbientala != float.Parse(analysislist[0].tempAmbientala) / 10)
+                {
+                    if (float.Parse(data.maxTempAmbientala) / 10 < float.Parse(analysislist[0].tempAmbientala)/10)
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Ambientala prea mare", "OK");
+                    else if (float.Parse(data.minTempAmbientala) / 10 > float.Parse(analysislist[0].tempAmbientala) / 10)
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Ambientala prea mica", "OK");
+                    prev_tempAmbientala = float.Parse(analysislist[0].tempAmbientala)/10;
+                }
+
+                if (prev_glicemie != int.Parse(AESRepository.DecryptAesManaged(analysislist[0].glicemie)))
+                {
+                    if (int.Parse(data.maxGlicemie) < int.Parse(AESRepository.DecryptAesManaged(analysislist[0].glicemie)))
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Glicemie prea mare", "OK");
+                    else if (int.Parse(data.minGlicemie) > int.Parse(AESRepository.DecryptAesManaged(analysislist[0].glicemie)))
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Glicemie prea mica", "OK");
+                    prev_glicemie = int.Parse(AESRepository.DecryptAesManaged(analysislist[0].glicemie));
+                }
+
+                if (prev_greutate != int.Parse(AESRepository.DecryptAesManaged(analysislist[0].greutate)))
+                {
+                    if (int.Parse(data.maxGreutate) < int.Parse(AESRepository.DecryptAesManaged(analysislist[0].greutate)))
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Greutate prea mare", "OK");
+                    else if (int.Parse(data.minGreutate) > int.Parse(AESRepository.DecryptAesManaged(analysislist[0].greutate)))
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Greutate prea mica", "OK");
+                    prev_greutate = int.Parse(AESRepository.DecryptAesManaged(analysislist[0].greutate));
+                }
+
+                if (prev_tempCorp != float.Parse(analysislist[0].tempCorp)/10)
+                {
+                    if (float.Parse(data.maxTempCorp)/10 < float.Parse(analysislist[0].tempCorp) / 10)
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Corporala prea mare", "OK");
+                    else if (float.Parse(data.minTempCorp)/10 > float.Parse(analysislist[0].tempCorp) / 10)
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Corporala prea mica", "OK");
+                    prev_tempCorp = float.Parse(analysislist[0].tempCorp) / 10;
+                }
+
+                if (prev_TA != int.Parse(AESRepository.DecryptAesManaged(analysislist[0].TA)))
+                {
+                    if (int.Parse(data.maxTA) < int.Parse(AESRepository.DecryptAesManaged(analysislist[0].TA)))
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Tensiune prea mare", "OK");
+                    else if (int.Parse(data.minTA) > int.Parse(AESRepository.DecryptAesManaged(analysislist[0].TA)))
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Tensiune prea mica", "OK");
+                    prev_TA = int.Parse(AESRepository.DecryptAesManaged(analysislist[0].TA));
+                }
             }
 
-            /*Random rnd = new Random();
-            num = rnd.Next();
-            num = num % 200;
-            */
-            var num = float.Parse(analysislist[0].tempAmbientala);
-            x += 200;
-            if (num < 20)
+            var num = int.Parse(analysislist[0].puls);
+            x += 2;
+            if (num < int.Parse(reflist[0].minPuls))
+            {
+                Culoare = "#ed0505";
+                var notification = new NotificationRequest
+                {
+                    BadgeNumber = 3,
+                    Description = "Aveti " + num + " pulsul !",
+                    Title = "Puls Prea Mic!",
+                    ReturningData = "Dummy Data",
+                    NotificationId = 1337
+                };
+                if(prev_puls!=num)
+                    await LocalNotificationCenter.Current.Show(notification);
+            }
+            else if (num < int.Parse(reflist[0].maxPuls))
                 Culoare = "#05ed20";
-            else if (num < 22)
-                Culoare = "#edd605";
             else
             {
                 Culoare = "#ed0505";
                 var notification = new NotificationRequest
                 {
                     BadgeNumber = 3,
-                    Description = "Aveti "+num+" pulsul !",
+                    Description = "Aveti " + num + " pulsul !",
                     Title = "Puls Marit!",
                     ReturningData = "Dummy Data",
                     NotificationId = 1337
                 };
-                //LocalNotificationCenter.Current.Show(notification);
-                //DisplayAlert(notification.Title, notification.Description,"Ok");
+                if (prev_puls != num)
+                    await LocalNotificationCenter.Current.Show(notification);
+                //DisplayAlert(notification.Title, notification.Description, "Ok");
             }
             entries.Add(
             new ChartEntry(num)
@@ -192,9 +301,8 @@ namespace ProiectIP
                 Label = x.ToString(),
                 ValueLabel = x.ToString(),
                Color = SKColor.Parse(Culoare)
-
             });
-            if(x>=2000)
+            if(x>=20)
                 entries.RemoveAt(0);
             //entries.Add(new ChartEntry(num));
 
@@ -207,7 +315,8 @@ namespace ProiectIP
                                             BackgroundColor = SKColors.Black, 
                                             PointMode = PointMode.Circle,
                                             PointSize = 18};
-            
+            prev_puls = int.Parse(analysislist[0].puls);
+
         }
 
         private async void Button_Clicked(object sender, EventArgs e)

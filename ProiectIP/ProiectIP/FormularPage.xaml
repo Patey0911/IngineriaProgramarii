@@ -49,7 +49,7 @@
                 x:Name="txtTensiuneArteriala"
                 TextColor="Black" 
                 FontSize="20"
-                Margin="197,0,0,0"
+                Margin="200,0,0,0"
                 Keyboard="Numeric"
                 TranslationY="-80"
                 HorizontalOptions="FillAndExpand"

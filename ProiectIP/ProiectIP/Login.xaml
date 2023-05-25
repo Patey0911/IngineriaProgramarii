@@ -25,7 +25,7 @@
             </Label>
 
             <Image 
-                Source="LoginIMG1.jpg" 
+                Source="LoginIMG1.png" 
                 HeightRequest="200">
             </Image>
 

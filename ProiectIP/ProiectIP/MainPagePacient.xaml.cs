@@ -19,7 +19,7 @@ namespace ProiectIP
     public partial class MainPagePacient : ContentPage
     {
         private int prev_TA, prev_glicemie, prev_greutate, prev_puls;
-        private float  prev_tempAmbientala, prev_tempCorp;
+        private float  prev_tempAmbientala, prev_tempCorp, prev_umiditate;
         private string prev_saturatieGaz;
         int x = 0;
         private List<Microcharts.ChartEntry> entries = new List<Microcharts.ChartEntry>();
@@ -55,6 +55,7 @@ namespace ProiectIP
             prev_puls = int.Parse(analysislist[0].puls);
             prev_tempAmbientala = float.Parse(analysislist[0].tempAmbientala);
             prev_tempCorp = float.Parse(AESRepository.DecryptAesManaged(analysislist[0].tempCorp));
+            prev_umiditate = float.Parse(analysislist[0].umiditate);
         }
         private async void GetAllRefDataAndCompare()
         {
@@ -70,6 +71,7 @@ namespace ProiectIP
                 prev_puls=0;
                 prev_tempAmbientala=0;
                 prev_tempCorp=0;
+                prev_umiditate=0;
                 prev_saturatieGaz = "false";
                 if (prev_puls != int.Parse(analysislist[0].puls))
                 {
@@ -86,10 +88,14 @@ namespace ProiectIP
                 }
                 prev_saturatieGaz = analysislist[0].saturatieGaz;
 
-                if (int.Parse(data.maxUmiditate) < int.Parse(analysislist[0].umiditate))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Umiditate prea mare", "OK");
-                else if (int.Parse(data.minUmiditate) > int.Parse(analysislist[0].umiditate))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Umiditate prea mica", "OK");
+                if (prev_umiditate != int.Parse(analysislist[0].umiditate))
+                {
+                    if (int.Parse(data.maxUmiditate) < int.Parse(analysislist[0].umiditate))
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Umiditate prea mare", "OK");
+                    else if (int.Parse(data.minUmiditate) > int.Parse(analysislist[0].umiditate))
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Umiditate prea mica", "OK");
+                }
+                prev_umiditate = int.Parse(analysislist[0].umiditate);
 
                 if (prev_tempAmbientala != float.Parse(analysislist[0].tempAmbientala) / 10)
                 {
@@ -212,10 +218,14 @@ namespace ProiectIP
                 }
                 prev_saturatieGaz = analysislist[0].saturatieGaz;
 
-                if (int.Parse(data.maxUmiditate) < int.Parse(analysislist[0].umiditate))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Umiditate prea mare", "OK");
-                else if (int.Parse(data.minUmiditate) > int.Parse(analysislist[0].umiditate))
-                    await App.Current.MainPage.DisplayAlert("Alerta !!!", "Umiditate prea mica", "OK");
+                if (prev_umiditate != int.Parse(analysislist[0].umiditate))
+                {
+                    if (int.Parse(data.maxUmiditate) < int.Parse(analysislist[0].umiditate))
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Umiditate prea mare", "OK");
+                    else if (int.Parse(data.minUmiditate) > int.Parse(analysislist[0].umiditate))
+                        await App.Current.MainPage.DisplayAlert("Alerta !!!", "Umiditate prea mica", "OK");
+                }
+                prev_umiditate = int.Parse(analysislist[0].umiditate);
 
                 if (prev_tempAmbientala != float.Parse(analysislist[0].tempAmbientala)/10)
                 {

@@ -112,9 +112,6 @@
     </AndroidResourceAnalysisConfig>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\LoginIMG2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\ShowPassword.png" />
   </ItemGroup>
   <ItemGroup>

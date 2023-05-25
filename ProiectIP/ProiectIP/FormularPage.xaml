@@ -4,7 +4,7 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:android="http://schemas.android.com/apk/res/android"
              x:Class="ProiectIP.FormularPage"
-             BackgroundColor="#add8e6">
+             BackgroundColor="#F2F2F2">
 
     <ScrollView>
         <StackLayout
@@ -21,13 +21,13 @@
                 HorizontalOptions="Start"
                 VerticalTextAlignment="Center"
                 TranslationX="20"
-                TranslationY="-30">
+                TranslationY="-35">
             </Label>
             <Entry
                 x:Name="txtGlicemie"
                 TextColor="Black" 
                 FontSize="20"
-                Margin="103,0,0,0"
+                Margin="107,0,0,0"
                 Keyboard="Numeric"
                 TranslationY="-80"
                 HorizontalOptions="FillAndExpand"
@@ -43,13 +43,13 @@
                 HorizontalOptions="Start"
                 VerticalTextAlignment="Center"
                 TranslationX="20"
-                TranslationY="-30">
+                TranslationY="-35">
             </Label>
             <Entry
                 x:Name="txtTensiuneArteriala"
                 TextColor="Black" 
                 FontSize="20"
-                Margin="190,0,0,0"
+                Margin="197,0,0,0"
                 Keyboard="Numeric"
                 TranslationY="-80"
                 HorizontalOptions="FillAndExpand"
@@ -65,13 +65,13 @@
                 HorizontalOptions="Start"
                 VerticalTextAlignment="Center"
                 TranslationX="20"
-                TranslationY="-30">
+                TranslationY="-35">
             </Label>
             <Entry
                 x:Name="txtGreutate"
                 TextColor="Black" 
                 FontSize="20"
-                Margin="103,0,0,0"
+                Margin="107,0,0,0"
                 Keyboard="Numeric"
                 TranslationY="-80"                
                 HorizontalOptions="FillAndExpand"
@@ -83,9 +83,10 @@
                 HorizontalOptions="Start"
                 Text="Anulare" 
                 FontSize="20"
+                WidthRequest="150"
                 FontAttributes="Bold"
                 TextColor="Black" 
-                BackgroundColor="#87ceeb" 
+                BackgroundColor="#51abcb" 
                 BorderWidth="1"
                 BorderColor="Black"
                 CornerRadius="50"
@@ -98,16 +99,17 @@
             <Button 
                 VerticalOptions="Center"
                 HorizontalOptions="End"
+                WidthRequest="150"
                 Text="Trimitere" 
                 FontSize="20"
                 FontAttributes="Bold"
                 TextColor="Black" 
-                BackgroundColor="#87ceeb" 
+                BackgroundColor="#51abcb" 
                 BorderWidth="1"
                 BorderColor="Black"
                 CornerRadius="50"
                 Clicked="Button_Clicked_1"
-                TranslationY="30"
+                TranslationY="25"
                 xct:TouchEffect.LongPressCommand="{Binding TouchCommand}"
                 xct:TouchEffect.LongPressDuration="250"
                 >

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="ProiectIP.Login"
-             BackgroundColor="#add8e6">
+             BackgroundColor="#F2F2F2">
 
     <ContentPage.Content>
         
@@ -43,7 +43,7 @@
                 x:Name="txtPassword"
                 Placeholder="Password" 
                 IsPassword="True" 
-                TextColor="White"
+                TextColor="Black"
                 PlaceholderColor="gray"
                 Text="{Binding Password}">
              </Entry>
@@ -70,7 +70,7 @@
                 FontSize="20"
                 FontAttributes="Bold"
                 TextColor="Black" 
-                BackgroundColor="#87ceeb" 
+                BackgroundColor="#51abcb" 
                 BorderWidth="1"
                 BorderColor="Black"
                 CornerRadius="50"

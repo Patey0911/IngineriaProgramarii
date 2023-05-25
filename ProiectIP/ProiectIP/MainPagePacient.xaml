@@ -5,10 +5,10 @@
              x:Class="ProiectIP.MainPagePacient"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"    
              xmlns:dxc="https://schemas.devexpress.com/xamarin/2014/forms/charts">
-    <ScrollView>
-        <StackLayout BackgroundColor="#add8e6" WidthRequest="600" Padding="10,40,10,400" Spacing="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+    <ScrollView >
+        <StackLayout BackgroundColor="#F2F2F2" WidthRequest="600" Padding="10,40,10,5" Spacing="0" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
             <Frame BorderColor="Gray" CornerRadius="5" Padding="8" Margin="10,5">
-                <microcharts:ChartView x:Name="MyChart"  HeightRequest="300" WidthRequest="600"/>
+                <microcharts:ChartView x:Name="MyChart"  HeightRequest="250" WidthRequest="550"/>
             </Frame>
             <Label
                 x:Name="UltimaConusltatieLabel"
@@ -134,34 +134,42 @@
                 TextColor="Black"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="Center"
-                Padding="40,5,5,40">
+                Padding="40,5,5,10">
             </Label>
             <Button
-                VerticalOptions="End" 
+                VerticalOptions="Center" 
+                HorizontalOptions="Start"
+                WidthRequest="150"
                 Text="Formular" 
                 FontSize="20"
                 FontAttributes="Bold"
                 TextColor="Black" 
-                BackgroundColor="#87ceeb" 
+                BackgroundColor="#51abcb" 
                 BorderWidth="1"
                 BorderColor="Black"
+                TextTransform="None"
                 CornerRadius="50"
                 Clicked="Button_Clicked"
+                TranslationY="20"
                 xct:TouchEffect.LongPressCommand="{Binding TouchCommand}"
                 xct:TouchEffect.LongPressDuration="250" 
                 Margin="20,0"/>
             <BoxView HeightRequest="20"></BoxView>
             <Button
-                VerticalOptions="End"
+                VerticalOptions="Center"
+                HorizontalOptions="End"
                 Text="Recomandari"
+                WidthRequest="160"
                 FontSize="20"
                 FontAttributes="Bold"
                 TextColor="Black"
-                BackgroundColor="#87ceeb"
+                TextTransform="None"
+                BackgroundColor="#51abcb"
                 BorderWidth="1"
                 BorderColor="Black"
                 CornerRadius="50"
                 Clicked="Button_Clicked_1"
+                TranslationY="-48"
                 xct:TouchEffect.LongPressCommand="{Binding TouchCommand}"
                 xct:TouchEffect.LongPressDuration="250" 
                 Margin="20,0"/>

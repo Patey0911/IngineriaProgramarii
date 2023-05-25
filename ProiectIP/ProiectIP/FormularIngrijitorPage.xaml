@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="ProiectIP.FormularIngrijitorPage"
-             BackgroundColor="#add8e6">
+             BackgroundColor="#F2F2F2">
     <ScrollView>
         <StackLayout
             Padding="40" 
@@ -18,13 +18,13 @@
                 HorizontalOptions="Start"
                 VerticalTextAlignment="Center"
                 TranslationX="20"
-                TranslationY="-30">
+                TranslationY="-35">
             </Label>
             <Entry
                 x:Name="txtGlicemie"
                 TextColor="Black" 
                 FontSize="20"
-                Margin="103,0,0,0"
+                Margin="107,0,0,0"
                 Keyboard="Numeric"
                 TranslationY="-80"
                 HorizontalOptions="FillAndExpand"
@@ -40,13 +40,13 @@
                 HorizontalOptions="Start"
                 VerticalTextAlignment="Center"
                 TranslationX="20"
-                TranslationY="-30">
+                TranslationY="-35">
             </Label>
             <Entry
                 x:Name="txtTensiuneArteriala"
                 TextColor="Black" 
                 FontSize="20"
-                Margin="190,0,0,0"
+                Margin="197,0,0,0"
                 Keyboard="Numeric"
                 TranslationY="-80"
                 HorizontalOptions="FillAndExpand"
@@ -62,13 +62,13 @@
                 HorizontalOptions="Start"
                 VerticalTextAlignment="Center"
                 TranslationX="20"
-                TranslationY="-30">
+                TranslationY="-35">
             </Label>
             <Entry
                 x:Name="txtGreutate"
                 TextColor="Black" 
                 FontSize="20"
-                Margin="103,0,0,0"
+                Margin="107,0,0,0"
                 Keyboard="Numeric"
                 TranslationY="-80"                
                 HorizontalOptions="FillAndExpand"
@@ -79,10 +79,11 @@
                 VerticalOptions="Center"
                 HorizontalOptions="Start"
                 Text="Anulare" 
+                WidthRequest="150"
                 FontSize="20"
                 FontAttributes="Bold"
                 TextColor="Black" 
-                BackgroundColor="#87ceeb" 
+                BackgroundColor="#51abcb" 
                 BorderWidth="1"
                 BorderColor="Black"
                 CornerRadius="50"
@@ -96,10 +97,11 @@
                 VerticalOptions="Center"
                 HorizontalOptions="End"
                 Text="Trimitere" 
+                WidthRequest="150"
                 FontSize="20"
                 FontAttributes="Bold"
                 TextColor="Black" 
-                BackgroundColor="#87ceeb" 
+                BackgroundColor="#51abcb" 
                 BorderWidth="1"
                 BorderColor="Black"
                 CornerRadius="50"

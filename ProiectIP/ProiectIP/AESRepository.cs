@@ -8,7 +8,7 @@ namespace ProiectIP
 {
     internal class AESRepository
     {
-        public static string Key = "0123456789ABCDEFFEDCBA9876543210";
+        public static string Key = "0123456789ABCDEF";
 
         public static string EncryptAesManaged(string raw)
         {

@@ -76,7 +76,6 @@ C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Rele
 C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\res\mipmap-xxxhdpi\icon.png
 C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\res\mipmap-xxxhdpi\launcher_foreground.png
 C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\res\drawable\loginimg1.png
-C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\res\drawable\loginimg2.jpg
 C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\res\drawable\showpassword.png
 C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\res\drawable\hidepassword.png
 C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\uploadflags.txt
@@ -577,3 +576,16 @@ C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Rele
 C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\stamp\_GenerateJavaStubs.stamp
 C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\stamp\_ResolveLibraryProjectImports.stamp
+C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\android\assets\Xamarin.AndroidX.VersionedParcelable.dll
+C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\android\assets\Xamarin.AndroidX.VersionedParcelable.pdb
+C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\android\assets\Xamarin.GooglePlayServices.Base.dll
+C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\android\assets\Xamarin.GooglePlayServices.Base.pdb
+C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\android\assets\Xamarin.GooglePlayServices.Basement.dll
+C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\android\assets\Xamarin.GooglePlayServices.Basement.pdb
+C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\android\assets\Xamarin.GooglePlayServices.Location.dll
+C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\android\assets\Xamarin.GooglePlayServices.Location.pdb
+C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\android\src\crc64e95e69e34d869711\LocationCallback.java
+C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\android\src\mono\com\google\android\gms\common\api\PendingResult_StatusListenerImplementor.java
+C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\android\src\plugin\LocalNotification\GeofenceTransitionsIntentReceiver.java
+C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\android\src\plugin\LocalNotification\NotificationActionReceiver.java
+C:\Users\mihal\Desktop\IngineriaProgramarii\ProiectIP\ProiectIP.Android\obj\Release\120\android\src\plugin\LocalNotification\ScheduledAlarmReceiver.java

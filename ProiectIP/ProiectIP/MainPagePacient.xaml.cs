@@ -42,20 +42,20 @@ namespace ProiectIP
             TALabel.Text = "Tensiune Arteriala: " + AESRepository.DecryptAesManaged(analysislist[0].TA);
             glicemieLabel.Text = "Glicemie: " + AESRepository.DecryptAesManaged(analysislist[0].glicemie);
             greutateLabel.Text = "Greutate: " + AESRepository.DecryptAesManaged(analysislist[0].greutate);
-            proximitateLabel.Text = "Proximitate: " + analysislist[0].proximitate;
+            proximitateLabel.Text = "Proximitate: " + AESRepository.DecryptAesManaged(analysislist[0].proximitate);
             pulsLabel.Text = "Puls: " + analysislist[0].puls;
-            saturatieGazLabel.Text = "Saturatie Gaz: " + analysislist[0].saturatieGaz;
-            tempAmbientalaLabel.Text = "Temperatura Ambientala: " + analysislist[0].tempAmbientala;
+            saturatieGazLabel.Text = "Saturatie Gaz: " + AESRepository.DecryptAesManaged(analysislist[0].saturatieGaz);
+            tempAmbientalaLabel.Text = "Temperatura Ambientala: " + AESRepository.DecryptAesManaged(analysislist[0].tempAmbientala);
             tempCorpLabel.Text="Temperatura Corporala: " + AESRepository.DecryptAesManaged(analysislist[0].tempCorp);
-            umiditateLabel.Text = "Umiditate: " + analysislist[0].umiditate;
+            umiditateLabel.Text = "Umiditate: " + AESRepository.DecryptAesManaged(analysislist[0].umiditate);
 
             prev_TA= int.Parse(AESRepository.DecryptAesManaged(analysislist[0].TA));
             prev_glicemie = int.Parse(AESRepository.DecryptAesManaged(analysislist[0].glicemie));
             prev_greutate = int.Parse(AESRepository.DecryptAesManaged(analysislist[0].greutate));
             prev_puls = int.Parse(analysislist[0].puls);
-            prev_tempAmbientala = float.Parse(analysislist[0].tempAmbientala);
+            prev_tempAmbientala = float.Parse(AESRepository.DecryptAesManaged(analysislist[0].tempAmbientala));
             prev_tempCorp = float.Parse(AESRepository.DecryptAesManaged(analysislist[0].tempCorp));
-            prev_umiditate = float.Parse(analysislist[0].umiditate);
+            prev_umiditate = float.Parse(AESRepository.DecryptAesManaged(analysislist[0].umiditate));
         }
         private async void GetAllRefDataAndCompare()
         {
@@ -82,28 +82,28 @@ namespace ProiectIP
                     prev_puls = int.Parse(analysislist[0].puls);
                 }
 
-                if (analysislist[0].saturatieGaz == "true" && prev_saturatieGaz != analysislist[0].saturatieGaz)
+                if (AESRepository.DecryptAesManaged(analysislist[0].saturatieGaz) == "true" && prev_saturatieGaz != AESRepository.DecryptAesManaged(analysislist[0].saturatieGaz))
                 {
                     await App.Current.MainPage.DisplayAlert("Alerta !!!", "Saturatie Gaz", "OK");
                 }
-                prev_saturatieGaz = analysislist[0].saturatieGaz;
+                prev_saturatieGaz = AESRepository.DecryptAesManaged(analysislist[0].saturatieGaz);
 
-                if (prev_umiditate != int.Parse(analysislist[0].umiditate))
+                if (prev_umiditate != float.Parse(AESRepository.DecryptAesManaged(analysislist[0].umiditate)) / 100)
                 {
-                    if (int.Parse(data.maxUmiditate) < int.Parse(analysislist[0].umiditate))
+                    if (float.Parse(data.maxUmiditate) / 10 < float.Parse(AESRepository.DecryptAesManaged(analysislist[0].umiditate)) / 100)
                         await App.Current.MainPage.DisplayAlert("Alerta !!!", "Umiditate prea mare", "OK");
-                    else if (int.Parse(data.minUmiditate) > int.Parse(analysislist[0].umiditate))
+                    else if (float.Parse(data.minUmiditate) / 10 > float.Parse(AESRepository.DecryptAesManaged(analysislist[0].umiditate)) / 100)
                         await App.Current.MainPage.DisplayAlert("Alerta !!!", "Umiditate prea mica", "OK");
                 }
-                prev_umiditate = int.Parse(analysislist[0].umiditate);
+                prev_umiditate = float.Parse(AESRepository.DecryptAesManaged(analysislist[0].umiditate)) / 100;
 
-                if (prev_tempAmbientala != float.Parse(analysislist[0].tempAmbientala) / 10)
+                if (prev_tempAmbientala != float.Parse(AESRepository.DecryptAesManaged(analysislist[0].tempAmbientala)) / 100)
                 {
-                    if (float.Parse(data.maxTempAmbientala) / 10 < float.Parse(analysislist[0].tempAmbientala) / 10)
+                    if (float.Parse(data.maxTempAmbientala) / 10 < float.Parse(AESRepository.DecryptAesManaged(analysislist[0].tempAmbientala)) / 100)
                         await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Ambientala prea mare", "OK");
-                    else if (float.Parse(data.minTempAmbientala) / 10 > float.Parse(analysislist[0].tempAmbientala) / 10)
+                    else if (float.Parse(data.minTempAmbientala) / 10 > float.Parse(AESRepository.DecryptAesManaged(analysislist[0].tempAmbientala)) / 100)
                         await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Ambientala prea mica", "OK");
-                    prev_tempAmbientala = float.Parse(analysislist[0].tempAmbientala) / 10;
+                    prev_tempAmbientala = float.Parse(AESRepository.DecryptAesManaged(analysislist[0].tempAmbientala)) / 100;
                 }
 
                 if (prev_glicemie != int.Parse(AESRepository.DecryptAesManaged(analysislist[0].glicemie)))
@@ -157,7 +157,7 @@ namespace ProiectIP
             var userlist = UsersRepository.GetAllUsers();
 
             base.OnAppearing();
-            Device.StartTimer(TimeSpan.FromSeconds(2), () =>
+          Device.StartTimer(TimeSpan.FromSeconds(2), () =>
             {
                 GetAllDataAndCompare(); // Apeleaza functia
                 return true; // Continua sa apeleze functia la fiecare interval
@@ -195,12 +195,12 @@ namespace ProiectIP
             TALabel.Text = "Tensiune Arteriala: " + AESRepository.DecryptAesManaged(analysislist[0].TA);
             glicemieLabel.Text = "Glicemie: " + AESRepository.DecryptAesManaged(analysislist[0].glicemie);
             greutateLabel.Text = "Greutate: " + AESRepository.DecryptAesManaged(analysislist[0].greutate);
-            proximitateLabel.Text = "Proximitate: " + analysislist[0].proximitate;
+            proximitateLabel.Text = "Proximitate: " + AESRepository.DecryptAesManaged(analysislist[0].proximitate);
             pulsLabel.Text = "Puls: " + analysislist[0].puls;
-            saturatieGazLabel.Text = "Saturatie Gaz: " + analysislist[0].saturatieGaz;
-            tempAmbientalaLabel.Text = "Temperatura Ambientala: " + analysislist[0].tempAmbientala;
+            saturatieGazLabel.Text = "Saturatie Gaz: " + AESRepository.DecryptAesManaged((analysislist[0].saturatieGaz));
+            tempAmbientalaLabel.Text = "Temperatura Ambientala: " + AESRepository.DecryptAesManaged((analysislist[0].tempAmbientala));
             tempCorpLabel.Text = "Temperatura Corporala: " + AESRepository.DecryptAesManaged(analysislist[0].tempCorp);
-            umiditateLabel.Text = "Umiditate: " + analysislist[0].umiditate;
+            umiditateLabel.Text = "Umiditate: " + AESRepository.DecryptAesManaged(analysislist[0].umiditate);
 
             foreach (var data in reflist)
             {
@@ -212,28 +212,28 @@ namespace ProiectIP
                         await App.Current.MainPage.DisplayAlert("Alerta !!!", "Puls prea mic", "OK");
                 }
 
-                if (analysislist[0].saturatieGaz == "true" && prev_saturatieGaz != analysislist[0].saturatieGaz)
+                if (AESRepository.DecryptAesManaged(analysislist[0].saturatieGaz) == "true" && prev_saturatieGaz != AESRepository.DecryptAesManaged(analysislist[0].saturatieGaz))
                 {
                     await App.Current.MainPage.DisplayAlert("Alerta !!!", "Saturatie Gaz", "OK");
                 }
-                prev_saturatieGaz = analysislist[0].saturatieGaz;
+                prev_saturatieGaz = AESRepository.DecryptAesManaged(analysislist[0].saturatieGaz);
 
-                if (prev_umiditate != int.Parse(analysislist[0].umiditate))
+                if (prev_umiditate != float.Parse(AESRepository.DecryptAesManaged(analysislist[0].umiditate)) / 100)
                 {
-                    if (int.Parse(data.maxUmiditate) < int.Parse(analysislist[0].umiditate))
+                    if (float.Parse(data.maxUmiditate)/10 < float.Parse(AESRepository.DecryptAesManaged(analysislist[0].umiditate)) / 100)
                         await App.Current.MainPage.DisplayAlert("Alerta !!!", "Umiditate prea mare", "OK");
-                    else if (int.Parse(data.minUmiditate) > int.Parse(analysislist[0].umiditate))
+                    else if (float.Parse(data.minUmiditate)/10> float.Parse(AESRepository.DecryptAesManaged(analysislist[0].umiditate))/100)
                         await App.Current.MainPage.DisplayAlert("Alerta !!!", "Umiditate prea mica", "OK");
                 }
-                prev_umiditate = int.Parse(analysislist[0].umiditate);
+                prev_umiditate = float.Parse(AESRepository.DecryptAesManaged(analysislist[0].umiditate)) / 100;
 
-                if (prev_tempAmbientala != float.Parse(analysislist[0].tempAmbientala)/10)
+                if (prev_tempAmbientala != float.Parse(AESRepository.DecryptAesManaged(analysislist[0].tempAmbientala))/100)
                 {
-                    if (float.Parse(data.maxTempAmbientala) / 10 < float.Parse(analysislist[0].tempAmbientala) / 10)
+                    if (float.Parse(data.maxTempAmbientala) / 10 < float.Parse(AESRepository.DecryptAesManaged(analysislist[0].tempAmbientala)) / 100)
                         await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Ambientala prea mare", "OK");
-                    else if (float.Parse(data.minTempAmbientala) / 10 > float.Parse(analysislist[0].tempAmbientala) / 10)
+                    else if (float.Parse(data.minTempAmbientala) / 10 > float.Parse(AESRepository.DecryptAesManaged(analysislist[0].tempAmbientala)) / 100)
                         await App.Current.MainPage.DisplayAlert("Alerta !!!", "Temperatura Ambientala prea mica", "OK");
-                    prev_tempAmbientala = float.Parse(analysislist[0].tempAmbientala) / 10;
+                    prev_tempAmbientala = float.Parse(AESRepository.DecryptAesManaged(analysislist[0].tempAmbientala)) / 100;
                 }
 
                 if (prev_glicemie != int.Parse(AESRepository.DecryptAesManaged(analysislist[0].glicemie)))
